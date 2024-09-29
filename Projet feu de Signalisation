@@ -1,0 +1,67 @@
+
+import RPi.GPIO as GPIO
+import time
+feu_nord_rouge = 17
+feu_nord_jaune = 23
+feu_nord_vert = 24
+feu_sud_rouge = 25
+feu_sud_jaune = 26
+feu_sud_vert = 27
+feu_est_rouge = 5
+feu_est_jaune = 6
+feu_est_vert = 13
+feu_ouest_rouge = 19
+feu_ouest_jaune = 20
+feu_ouest_vert = 21
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(feu_nord_rouge, GPIO.OUT)
+GPIO.setup(feu_nord_jaune, GPIO.OUT)
+GPIO.setup(feu_nord_vert, GPIO.OUT)
+GPIO.setup(feu_sud_rouge, GPIO.OUT)
+GPIO.setup(feu_sud_jaune, GPIO.OUT)
+GPIO.setup(feu_sud_vert, GPIO.OUT)
+GPIO.setup(feu_est_rouge, GPIO.OUT)
+GPIO.setup(feu_est_jaune, GPIO.OUT)
+GPIO.setup(feu_est_vert, GPIO.OUT)
+GPIO.setup(feu_ouest_rouge, GPIO.OUT)
+GPIO.setup(feu_ouest_jaune, GPIO.OUT)
+GPIO.setup(feu_ouest_vert, GPIO.OUT)
+def allumer_feu(feu):
+    GPIO.output(feu, GPIO.HIGH)
+def eteindre_feu(feu):
+    GPIO.output(feu, GPIO.LOW)
+while 1:
+    allumer_feu(feu_nord_vert)
+    allumer_feu(feu_sud_vert)
+    eteindre_feu(feu_nord_rouge)
+    eteindre_feu(feu_sud_rouge)
+    eteindre_feu(feu_est_rouge)
+    eteindre_feu(feu_ouest_rouge)
+    time.sleep(5)
+    eteindre_feu(feu_nord_vert)
+    eteindre_feu(feu_sud_vert)
+    allumer_feu(feu_nord_jaune)
+    allumer_feu(feu_sud_jaune)
+    time.sleep(2)
+    eteindre_feu(feu_nord_jaune)
+    eteindre_feu(feu_sud_jaune)
+    allumer_feu(feu_nord_rouge)
+    allumer_feu(feu_sud_rouge)
+    allumer_feu(feu_est_vert)
+    allumer_feu(feu_ouest_vert)
+    time.sleep(5)
+    eteindre_feu(feu_est_vert)
+    eteindre_feu(feu_ouest_vert)
+    allumer_feu(feu_est_jaune)
+    allumer_feu(feu_ouest_jaune)
+    time.sleep(2)
+    eteindre_feu(feu_est_jaune)
+    eteindre_feu(feu_ouest_jaune)
+    allumer_feu(feu_est_rouge)
+    allumer_feu(feu_ouest_rouge)
+    time.sleep(5)
+    allumer_feu(feu_nord_rouge)
+    allumer_feu(feu_sud_rouge)
+    allumer_feu(feu_est_vert)
+    allumer_feu(feu_ouest_vert)
+    time.sleep(5)
